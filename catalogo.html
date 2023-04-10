@@ -4,9 +4,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo</title>
+    <title>Título</title>
+    <link rel="stylesheet" href="catalogo.css">
 </head>
 <body>
+    <div class="container">
     
+        <main>
+
+            <div class="entrar">
+                <form action="http://127.0.0.1:5500/filmes.html">
+                    <label for="">Nome do Título:</label>
+                    <input type="text" required  placeholder="Digite">
+                    <label for="resumo">Resumo:</label>
+                    <textarea name="resumo" id="ivoce" cols="30" rows="10" placeholder="Digite"></textarea>
+                    <label for="">Escolher Foto:</label>
+                    <input type="text">
+                    <div class="botaoentrar">
+                        <input type="submit" value="Confirmar" class="btn-confirme">
+                    </div>
+                </form>
+            </div>
+        </main>
+        <footer>
+        
+                <div class="logo">
+                    <img src="imagens/logo.png" alt="">
+                </div>
+
+                <ul>
+                    <li class="destaque">INICIO</li>
+                    <li>Home</li>
+                    <li>Cursos</li>
+                    <li>Dowloads</li>
+                </ul>
+                <ul>
+                    <li class="destaque">SOBRE NÓS</li>
+                    <li>Empresa</li>
+                    <li>Contato</li>
+                    <li>Blog</li>
+                </ul>
+                <ul>
+                    <li class="destaque">SUPORTE</li>
+                    <li>FAQ</li>
+                    <li>Telefone</li>
+                    <li>Chat</li>
+                </ul>
+
+                <div class="fdireita">
+                    <div class="sociais">
+                        <i class="bi bi-twitter"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-facebook"></i>
+                    </div>
+                    <input type="submit" value="Contato" class="btn-contato">
+                </div>
+           
+          
+        </footer>
+        <div class="direitos">
+            <p>© 2023 Copyright - Programador Viking</p>
+        </div>
+    </div>
 </body>
 </html>
