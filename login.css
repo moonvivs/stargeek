@@ -72,6 +72,10 @@ form > label {
     font-family: 'Suez One';
 }
 
+.mensagem {
+    color: white;
+}
+
 form > .ent > input[type="submit"]{
     color: white;
     background-color: #232527;

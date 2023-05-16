@@ -12,15 +12,16 @@
         <main>
             <div class="entrar">
                 <p>CASDATRE-SE E DIVIRTA-SE!</p>
-                <form action="http://127.0.0.1:5500/filmes.html">
-                    <label for="text">Nome:</label>
-                    <input type="nome" required  placeholder="Digite seu nome">
+                <div class="mensagem"></div>
+                <form action="http://127.0.0.1:5500/filmes.html" id="formulario">
+                    <label for="nome">Nome:</label>
+                    <input type="text" name="nome" id="nome">
                     <label for="">E-mail:</label>
-                    <input type="email" required  placeholder="nome@gamil.com">
-                    <label for="text">Senha:</label>
-                    <input type="password" required placeholder="Digite sua senha">
-                    <label for="text">Senha:</label>
-                    <input type="password" required placeholder="Digite sua senha">
+                    <input type="email" name="email" id="email">
+                    <label for="senha">Senha:</label>
+                    <input type="password" name="senha" id="senha">
+                    <label for="senha">Senha:</label>
+                    <input type="password" name="senha" id="senha">
                     <div class="termos">
                         <input type="checkbox" required>
                         <label for="">Eu aceito <u>Termos Política e Privacidade</u> do site.</label>
@@ -71,5 +72,6 @@
             <p>© 2023 Copyright - Programador Viking</p>
         </div>
     </div>
+    <script src="cadastro.js"></script>
 </body>
 </html>

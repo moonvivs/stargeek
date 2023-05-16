@@ -53,6 +53,10 @@ form > label {
     padding: 50px;
 }
 
+.mensagem {
+    color: white;
+}
+
 .entrar::before{
     content: "";
     background-image: url(imagens/logo.png);
