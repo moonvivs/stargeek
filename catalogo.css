@@ -86,7 +86,7 @@ form > input {
     min-height: 35px;
 }
 
-.btn-confirme{
+.btne{
     font-size: 1.5rem;
     padding: 5px 20px;
     display: flex;
@@ -175,5 +175,4 @@ footer > ul {
     min-width: 500px;
     padding: 20px;
 }
-
 

@@ -13,17 +13,24 @@
         <main>
 
             <div class="entrar">
-                <form action="http://127.0.0.1:5500/filmes.html">
+                <div class="cadmodal">
+                <div class="modal">
+                <form action="" id="formulario">
                     <label for="">Nome do Título:</label>
-                    <input type="text" required  placeholder="Digite">
+                    <input type="text" id="nome" required  placeholder="Digite">
                     <label for="resumo">Resumo:</label>
-                    <textarea name="resumo" id="ivoce" cols="30" rows="10" placeholder="Digite"></textarea>
+                    <textarea name="resumo" id="resumo" cols="30" rows="10" placeholder="Digite"></textarea>
                     <label for="">Escolher Foto:</label>
-                    <input type="file" value ="adicionar foto">
+                    <input type="file" value ="adicionar foto" id="ef">
                     <div class="botaoentrar">
-                        <input type="submit" value="Confirmar" class="btn-confirme">
+                        <input type="submit" id="btne" value="Cadastrar" class="btne">
                     </div>
+                    <button class="btneditar">Editar</button>
+                    <input type="hidden" id="idalterar">
                 </form>
+                <button id="btnclose" onclick="fechar()">Fechar</button>
+                </div>
+                </div>
             </div>
         </main>
         <footer>
@@ -66,5 +73,6 @@
             <p>© 2023 Copyright - Programador Viking</p>
         </div>
     </div>
+    <script src="catalogo.js"></script>
 </body>
 </html>
