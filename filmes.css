@@ -58,7 +58,6 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: aliceblue;
     
 }
 
@@ -98,7 +97,7 @@ main {
     align-items: center;
     padding: 10px;
     column-gap: 20px;
-    height: 80px;
+    height: 100px;
     width: 100%;
     z-index: 2;
     display: none;
@@ -108,10 +107,22 @@ main {
     display: flex;
 }
 
-.info > a {
+.info > i {
     color: white;
 }
 
+.btnc {
+    border-radius: 10px ;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    background-color: #8A0000;
+    font-size: 1rem;
+}
+
+.btnc:hover {
+    background-color:#0E9FCB;
+}
 
 footer {
     grid-area:  f;

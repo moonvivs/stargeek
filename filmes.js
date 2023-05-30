@@ -1,11 +1,13 @@
 const btn = document.getElementById("btn");
-const botaomodal = document.getElementById("btn");
-const cards = document.querySelector(".cards");
+const cards = document.querySelector(".linhas");
 const nome = document.getElementById("nome");
 const resumo = document.getElementById("resumo");
 const ef = document.getElementById("ef");
 
+var emaillogado;
+femaillogado();
 
+carregarCatalogo();
 function carregarCatalogo(){
     let dados = JSON.parse(localStorage.getItem("catalogo"));
     let divcard = document.createElement("div");
@@ -16,18 +18,20 @@ function carregarCatalogo(){
     }
 
     dados.forEach((elemento, indice) => {
+        if(elemento.email == emaillogado){
         let divcard = document.createElement("div");
-        divcard.innerHTML = `<div class="cardimagem"> <img src="imagens/${elemento.foto}"> </div> <div class="cardnome">${elemento.nome} <p>${elemento.descricao}</p></div> <div class="cardinfo">
-        <div class="editar"><i class="bi bi-pencil-fill" onclick="editar(${indice})"></i></div>
-        <div class="excluir"><i class="bi bi-trash3-fill" onclick="excluir</i></div>
-        </div>`;
+        divcard.innerHTML = `<div>
+        <img src="imagens/${elemento.foto}" alt="">
+        <div class="info">
+        <i  onclick="editar(${indice})">Editar</i>
+        <i  onclick="excluir(${indice})">Excluir</i>
+        </div>
+    </div>`;
 
-        cards.appendChild(divcard);
+        cards.appendChild(divcard);}
         
     });
 }
-
-carregarCatalogo();
 
 function excluir(indice){
     let dados = JSON.parse(localStorage.getItem("catalogo"));
@@ -40,6 +44,20 @@ function excluir(indice){
     window.location.reload();
 }
 
-btn.onclick= () => {
-    window.location.assign("catalogo.html")
+function editar(indice){
+    var url ="catalogo.html?peditar=true&indice="+ encodeURIComponent(indice);
+    window.location.href = url;
 }
+
+btn.onclick= () => {
+    window.location.assign("catalogo.html");
+}
+
+function femaillogado(){
+    let dados = JSON.parse(sessionStorage.getItem("logado"));
+      if (dados == null){
+        window.location.assign("login.html");
+      }else {
+        emaillogado = dados[0].email;
+      }
+  }

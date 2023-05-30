@@ -1,44 +1,95 @@
 const nome = document.getElementById("nome");
-const resumo = document.getElementById("resumo");
-const btne = document.getElementById("btne");
-const botaomodal = document.getElementById("btn");
-const cards = document.querySelector(".cards");
-const ef = document.getElementById("ef");
-const botaoentrar = document.querySelector(".botaoentrar");
-const botaoeditar = document.querySelector(".btneditar");
-const botaofechar = document.querySelector(".btnclose");
-const idelemento = document.getElementById("idalterar");
+const descricao = document.getElementById("resumo");
+const foto = document.getElementById("foto");
+const botaocadastrar = document.querySelector(".botaocadastrar");
 
-btne.onclick= (evento)=> {
+var url = new URL(window.location.href);
+var peditar = url.searchParams.get("peditar");
+var pindice = url.searchParams.get("indice");
+
+var emaillogado;
+femaillogado();
+
+if (peditar == "true"){
+  editar(pindice);
+}
+
+botaocadastrar.onclick = (evento)=>{
+  
+  if ((peditar != "true") || (peditar == null)){
     evento.preventDefault();
-    fenvio()
-    .then(result =>{
+    fenvio().then(result =>{
                      if(result){
                         let dados = JSON.parse(localStorage.getItem("catalogo"))||[];
                         dados.push(
                                       {
-                                         nome: nome.value,
-                                        resumo: resumo.value,
-                                        foto: nomeArq
+                                        nome: nome.value,
+                                        descricao: descricao.value,
+                                        foto: nomeArq,
+                                        email: emaillogado
                                         }
                                      )
                         localStorage.setItem("catalogo", JSON.stringify(dados));
+                        window.location.assign("filmes.html");
                         
                      }else{
                         alert("Houve erro no envio do arquivo");
                      }
 
                     });
+      }else
+      {
+        editarenvio(evento);
+        
+      }
+    
+}
+function editar(indice){
+  nome.value = "editar";
+  descricao.value = "editar";
+  foto.files[0] = null;  
+  let dados = JSON.parse(localStorage.getItem("catalogo"));
+  nome.value = dados[indice].nome;
+  descricao.value = dados[indice].descricao;
+  fotoa= dados[indice].foto;
+ 
+}
+var fotoa;
+function editarenvio(evento){
+     evento.preventDefault();
+    if ((fotoa != foto.value)&&(foto.value != "")){
+ 
+    fenvio()
+    .then(result =>{
+                    if(result){
+                      salvaEdicao(nomeArq);
+                       }
+                    });
+   }
+   else
+   {
+        salvaEdicao(fotoa);
+   } 
 }
 
+function salvaEdicao(pfoto){
+  let dados = JSON.parse(localStorage.getItem("catalogo"));
+  dados[pindice].nome = nome.value;
+  dados[pindice].descricao = descricao.value;
+  dados[pindice].foto = pfoto;
+  dados[pindice].email = emaillogado;
+  localStorage.setItem("catalogo", JSON.stringify(dados));
+  window.location.assign("catalogo.html");
 
+}
 var nomeArq;
 async function fenvio() { 
     const url = 'http://localhost:3005/upload';
-    const arquivo = document.getElementById("ef").files[0];
+    const arquivo = document.getElementById("foto").files[0];
     const formData = new FormData();
     formData.append('arquivo', arquivo);
-    console.log(JSON.stringify(formData));
+    console.log(JSON.stringify(formData.values[0]));
+    console.log(JSON.stringify(formData.values[1]));
     try{
          
          var resp = await fetch(url, {
@@ -46,6 +97,7 @@ async function fenvio() {
                                        body: formData,
                                      }
                                ) 
+         console.log(resp);
          if (resp.ok){
            let respText = await resp.text();
            nomeArq = respText;
@@ -61,42 +113,11 @@ async function fenvio() {
       }
 }
 
-function editar(indice){
-   nome.value = "";
-   resumo.value = "";
-   ef.files[0] = null;
-   cadmodal.style.display = "flex";
-   botaocadastrar.style.display = "none";
-   botaoeditar.style.display = "block";
-   
-   let dados = JSON.parse(localStorage.getItem("catalogo"));
-   nome.value = dados[indice].nome;
-   resumo.value = dados[indice].resumo;
-   //foto.files[0] = dados[indice].foto;
-   idelemento.value = indice;
-   fotoa = dados[indice].ef;
-}
-var fotoa;
-botaoeditar.onclick = (evento) =>{
-   if ((fotoa != ef.value)&&(ef.value != "")){
-   evento.preventDefault();
-   fenvio()
-   .then(result =>{
-                    if(result){
-                       salvaEdicao(nomeArq);
-                       }
-                   });
-   }
-   else
-   {
-       salvaEdicao(fotoa);
-   } 
-}
-function salvaEdicao(pfoto){
-   let dados = JSON.parse(localStorage.getItem("catalogo"));
-   dados[idelemento.value].nome = nome.value;
-   dados[idelemento.value].descricao = resumo.value;
-   dados[idelemento.value].ef = pfoto;
-   localStorage.setItem("catalogo", JSON.stringify(dados));
-
+function femaillogado(){
+  let dados = JSON.parse(sessionStorage.getItem("logado"));
+    if (dados == null){
+      window.location.assign("login.html");
+    }else {
+      emaillogado = dados[0].email;
+    }
 }
