@@ -79,7 +79,7 @@ function salvaEdicao(pfoto){
   dados[pindice].foto = pfoto;
   dados[pindice].email = emaillogado;
   localStorage.setItem("catalogo", JSON.stringify(dados));
-  window.location.assign("catalogo.html");
+  window.location.assign("filmes.html");
 
 }
 var nomeArq;
